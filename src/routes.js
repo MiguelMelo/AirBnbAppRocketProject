@@ -4,10 +4,14 @@ import SingIn from './pages/singIn';
 import SingUp from './pages/singUp';
 import Main from './pages/main';
 
-const Routes = createStackNavigator({
+const SingnedOut = createStackNavigator({
     SingIn,
     SingUp,
-    Main
+    Main,
 });
 
-export default Routes;
+const SingnedIn = createStackNavigator({
+    Main,
+});
+
+export { SingnedIn, SingnedOut };

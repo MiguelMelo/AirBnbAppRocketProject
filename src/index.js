@@ -1,7 +1,28 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { AsyncStorage } from 'react-native';
 
-import Routes from './routes';
+import Routes, { SingnedIn, SingnedOut } from './routes';
 
-const App = () => <Routes />;
+class App extends Component {
+    state = {
+        token: null,
+    };
+
+    async componentDidMount() {
+        // AsyncStorage.removeItem('@AirBnbApp:token');
+
+        const token = await AsyncStorage.getItem('@AirBnbApp:token');
+
+        this.setState({ token });
+    };
+
+    render() {
+            if(!this.state.token) {
+                return <SingnedOut />;
+            } else {
+                return <SingnedIn />;
+            }
+    }
+} 
 
 export default App;
