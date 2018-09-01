@@ -9,19 +9,19 @@ class App extends Component {
     };
 
     async componentDidMount() {
-        // AsyncStorage.removeItem('@AirBnbApp:token');
-
         const token = await AsyncStorage.getItem('@AirBnbApp:token');
 
         this.setState({ token });
     };
 
     render() {
-            if(!this.state.token) {
-                return <SingnedOut />;
-            } else {
-                return <SingnedIn />;
-            }
+        if(!this.state.token) {
+            return <SingnedOut />;
+        } else {
+            return <SingnedIn />;
+        }
+
+        // return <Routes />;
     }
 } 
 
